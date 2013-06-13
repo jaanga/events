@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<html lang='en'>
+<head>
+<title>xmlhttp</title>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
+</head>
+<body>
+
+<script src='http://mrdoob.github.com/three.js/examples/js/Detector.js'></script>
+<script src='http://mrdoob.github.com/three.js/build/three.min.js'></script>
+<script src='http://mrdoob.github.com/three.js/examples/js/controls/TrackballControls.js'></script>
+<script src='http://mrdoob.github.com/three.js/examples/js/libs/stats.min.js'></script>
+<!--
+<script src='../../three.js/examples/js/Detector.js'></script>
+<script src='../../three.js/build/three.min.js'></script>
+<script src='../../three.js/examples/js/controls/TrackballControls.js'></script>
+<script src='../../three.js/examples/js/libs/stats.min.js'></script>
+-->
+<script>
+	
+	var renderer, scene, camera, controls, stats;
+	var info;
+	var sticks, jaanga;
+
+	init();
+	animate();
+
+	function init() {
+		var geometry, material, mesh, css;	
+		
+		css = document.body.appendChild( document.createElement('style') );
+		css.innerHTML = 'body { font: 600 16pt monospace; margin: 0; overflow: hidden; text-align: center; text-shadow: 2px 2px 2px pink, 2px -2px 2px #444; ' +
+			'background: -webkit-radial-gradient(45px 45px, cover, rgb(255, 0, 0) 0%, rgb(0, 0, 255) 100%);' +
+			'background: radial-gradient(45px 45px, cover, rgb(255, 0, 0) 0%, rgb(0, 0, 255) 100%); }' +
+		'';
+		
+		info = document.body.appendChild( document.createElement( 'div' ) );
+		info.style.cssText = 'background-color: transparent; color: #00ff00; position: absolute; right: 20px; top: 0px; text-align: left; width: 50% ';
+		info.innerHTML = '<p>xmlhttprequest2canvas</p>';  
+		
+		if ( ! Detector.webgl ) { Detector.addGetWebGLMessage( { parent: info } ); }
+		
+		if ( ! Detector.webgl ) {
+			renderer = new THREE.CanvasRenderer( { antialias: true } );
+		} else {
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+		}
+		
+		renderer.setSize( window.innerWidth, window.innerHeight );
+
+		document.body.appendChild( renderer.domElement );
+		scene = new THREE.Scene();
+
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 10000 );
+		camera.position.set( 0, 0, 700 );
+		controls = new THREE.TrackballControls( camera, renderer.domElement );
+
+		stats = new Stats();
+		stats.domElement.style.cssText = 'position: absolute; top: 0px; zIndex: 100; ';
+		document.body.appendChild( stats.domElement );    
+
+		geometry = new THREE.AxisHelper( 1000 );
+		scene.add( geometry );
+
+		geometry = new THREE.CubeGeometry( 10, 10, 10 );
+		material = new THREE.MeshNormalMaterial();
+		cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+		
+		requestFile( 'readme.md' );
+		
+		drawAnother();
+		drawMore();
+	}
+
+	var file;
+
+	function requestFile( fname ) {
+		file = new XMLHttpRequest();
+		file.open( 'GET', fname, true );
+		file.onreadystatechange = callbackFile;
+		file.send( null );
+	}
+
+	function callbackFile() {
+		if ( file.readyState == 4  ) {
+			var data = file.responseText;	
+			
+			var lines = data.split(/\r\n|\n/);
+
+			console.log( lines );
+			postLog( lines );
+			parseLines( lines );
+		} else {
+			console.log( 'waiting...' );
+		}
+	}	
+	
+	function postLog( lines ) {
+		for (var i = 0, len = lines.length; i < len; i++) {
+			info.innerHTML += lines[i] + '<br>';
+		}
+	}
+	
+	function parseLines( lines ) {
+		geometry = new THREE.PlaneGeometry( 600, 400, 1, 1 );
+		geometry = new THREE.SphereGeometry( 600, 50, 50 );
+		// geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
+		var bigText = [];
+		bigText[0] = "Home page for jaanga.github.io";
+		bigText[1] = "";
+		bigText[2] = "Learning by failing even faster";
+		bigText[3] = "";
+		bigText[4] = "3D can make 90's web sites look staid";
+		bigText[5] = "";
+		bigText[6] = "Even when you stand on gigantic shoulders...";
+		bigText[7] = " - there's the possibility you can fall off";
+		bigText[8] = "";
+		bigText[9] = "Making stuff is fun. Making pretty is hard work.";
+		
+		material = new THREE.MeshBasicMaterial( { map: canvasText( bigText, { color: '#ff0000', tricks: true } ), side: THREE.BackSide, transparent: true  } );
+		// material = new THREE.MeshNormalMaterial();
+		mesh = new THREE.Mesh( geometry, material );
+		scene.add( mesh );	
+	}
+	
+	function drawAnother() {
+		jaanga = new THREE.Object3D();
+		geometry = new THREE.PlaneGeometry( 900, 400, 1, 1 );
+		geometry = new THREE.SphereGeometry( 1000, 50, 50 );
+		// geometry.applyMatrix( new THREE.Matrix4().makeRotationX( - Math.PI / 2 ) );
+		var bb = [ 'Jaanga' ];
+		material = new THREE.MeshBasicMaterial( { map: canvasText( bb, { color: '#ff0000', fontSize: 64} ), side: THREE.BackSide, transparent: true } );
+		// material = new THREE.MeshNormalMaterial();
+		mesh = new THREE.Mesh( geometry, material );
+		mesh.rotation.set( -4, -2.5, 4 );
+		jaanga.add( mesh );	
+		scene.add( jaanga );
+	}
+	
+	
+	function drawMore() {
+		sticks = new THREE.Object3D();
+		for (var i = 0; i < 50; i++) {
+			geometry = new THREE.CubeGeometry( 100, 3000, 100 );
+			material = new THREE.MeshNormalMaterial();
+			mesh = new THREE.Mesh( geometry, material );
+			// mesh.position.set( 1200, 0, 0 );
+			/// mesh.lookAt( new THREE.Vector3( 0, 0, 0 ) );
+			mesh.rotation.set( 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random() );
+			mesh.translateZ( 1500);
+			sticks.add( mesh );
+				
+		}
+		scene.add( sticks );
+	}
+	
+	function canvasText ( text, parameters ) {
+		// must have at least on parameter given in calling function
+		var canvas = document.createElement("canvas");
+		var width = parameters.width ? parameters.width : 800 ;
+		canvas.width = width;
+		var height = parameters.height ? parameters.height : 400 ;
+		canvas.height = height;
+console.log( width, height, canvas.width, canvas.height );
+		var context = canvas.getContext("2d");
+		context.translate(width, 0);
+		context.scale(-1, 1);
+		context.fillStyle =  parameters.backgroundColor ? parameters.backgroundColor : 'transparent';
+		context.fillRect( 0, 0, width, height );
+		//context.lineWidth = 2;
+		//context.strokeRect(0, 0, width, height);
+		context.fillStyle = parameters.color ? parameters.color : '#ffffff';
+		
+		if ( parameters.tricks ) {
+			var gradient = context.createLinearGradient(0, 0, width, height);
+			gradient.addColorStop(0, 'white');
+			gradient.addColorStop(0.5, 'black');
+			gradient.addColorStop(1, 'red');
+			context.fillStyle = gradient;
+		}
+		
+		context.font = parameters.fontSize ? parameters.fontSize + "pt Arial bold" : '24pt Arial bold';
+		context.textAlign = parameters.textAlign ? parameters.textAlign : 'left' ;
+
+		context.textBaseline = "top";
+		
+		for (var i = 0, len = text.length; i < len; i++) {
+			if ( parameters.tricks ) {
+				context.shadowColor = 'rgb(' + parseInt(100 * Math.random()) + ',' + parseInt(100 * Math.random()) + ',' + parseInt(100 * Math.random()) + ')';
+				context.shadowBlur =  ( parameters['shadowBlur'] !== undefined ) ? parameters['shadowBlur'] : 5;
+				context.shadowOffsetX = 10;
+				context.shadowOffsetY = Math.random() * 20 - 10;	
+			}
+			context.fillText( text[i], 15, 130 + i * 20);
+		} 
+
+		var texture = new THREE.Texture( canvas );
+		texture.needsUpdate = true;
+		// return new THREE.MeshBasicMaterial( { map: texture,  side: THREE.DoubleSide, transparent: true } );
+		return texture;
+	}	
+	function v(x,y,z){ return new THREE.Vector3(x,y,z); }
+	
+	function animate() {
+		requestAnimationFrame( animate );
+		controls.update();
+		sticks.rotation.y += 0.0005;
+		sticks.rotation.z += 0.0005;
+		jaanga.rotation.y += 0.001;
+		jaanga.rotation.x += 0.005;
+		for (var i = 0, len = sticks.children.length; i < len; i++) {
+			sticks.children[i].rotateOnAxis( v(0,1,0), 0.005 );
+			// console.log
+			// sticks.children[i].needsUpdate = true;
+		} 
+		renderer.render( scene, camera );
+		stats.update();
+	}
+</script>
+</body>
+</html>
