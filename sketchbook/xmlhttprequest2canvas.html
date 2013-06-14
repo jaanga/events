@@ -1,8 +1,8 @@
 ﻿<!doctype html>
-<html lang='en'>
+<html lang=en>
 <head>
-<title>xmlhttp</title>
-<meta charset='utf-8'>
+<title></title>
+<meta charset=utf-8>
 <meta name='viewport' content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0'>
 </head>
 <body>
@@ -18,11 +18,11 @@
 <script src='../../three.js/examples/js/libs/stats.min.js'></script>
 -->
 <script>
-	
+
 	var renderer, scene, camera, controls, stats;
 	var info;
 	var sticks, jaanga;
-
+	
 	init();
 	animate();
 
@@ -37,8 +37,10 @@
 		
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'background-color: transparent; color: #00ff00; position: absolute; right: 20px; top: 0px; text-align: left; width: 50% ';
-		info.innerHTML = '<p>xmlhttprequest2canvas</p>';  
-		
+		info.innerHTML = '<p>&larr; this sketch: xmlhttprequest2canvas.html<br>' +
+			'Jiggle it with your pointing device<br>' +
+			'=================================================</p>';  
+	
 		if ( ! Detector.webgl ) { Detector.addGetWebGLMessage( { parent: info } ); }
 		
 		if ( ! Detector.webgl ) {
@@ -67,8 +69,8 @@
 		material = new THREE.MeshNormalMaterial();
 		cube = new THREE.Mesh( geometry, material );
 		scene.add( cube );
-		
-		requestFile( 'readme.md' );
+	
+		requestFile( '../../jaanga.github.com/readme.md' );
 		
 		drawAnother();
 		drawMore();
@@ -88,12 +90,11 @@
 			var data = file.responseText;	
 			
 			var lines = data.split(/\r\n|\n/);
-
-			console.log( lines );
+// console.log( lines );
 			postLog( lines );
 			parseLines( lines );
 		} else {
-			console.log( 'waiting...' );
+			// console.log( 'waiting...' );
 		}
 	}	
 	
@@ -147,7 +148,7 @@
 			material = new THREE.MeshNormalMaterial();
 			mesh = new THREE.Mesh( geometry, material );
 			// mesh.position.set( 1200, 0, 0 );
-			/// mesh.lookAt( new THREE.Vector3( 0, 0, 0 ) );
+			// mesh.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 			mesh.rotation.set( 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random() );
 			mesh.translateZ( 1500);
 			sticks.add( mesh );
@@ -163,7 +164,7 @@
 		canvas.width = width;
 		var height = parameters.height ? parameters.height : 400 ;
 		canvas.height = height;
-console.log( width, height, canvas.width, canvas.height );
+// console.log( width, height, canvas.width, canvas.height );
 		var context = canvas.getContext("2d");
 		context.translate(width, 0);
 		context.scale(-1, 1);
@@ -201,6 +202,8 @@ console.log( width, height, canvas.width, canvas.height );
 		// return new THREE.MeshBasicMaterial( { map: texture,  side: THREE.DoubleSide, transparent: true } );
 		return texture;
 	}	
+	
+	
 	function v(x,y,z){ return new THREE.Vector3(x,y,z); }
 	
 	function animate() {
@@ -218,6 +221,7 @@ console.log( width, height, canvas.width, canvas.height );
 		renderer.render( scene, camera );
 		stats.update();
 	}
+
 </script>
 </body>
 </html>
