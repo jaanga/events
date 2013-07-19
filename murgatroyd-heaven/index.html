@@ -15,10 +15,9 @@
 <script>
 // Theo Armour ~ 2013-07-18 ~ MIT License
 
-	var renderer, scene, camera, controls, info, cube, assets, projector, raycaster;
-	
+	var renderer, scene, camera, controls, info, cube, assets;
+
 	var score = 0;
-	var scoreMax;
 	var scoreCard;
 
 	var soundPlus = new Audio('http://ie.microsoft.com/testdrive/Graphics/IEBeatz/assets/sounds/mp3/effect.mp3');
@@ -28,8 +27,8 @@
 
 	function init() {
 		var geometry, material, mesh, css;
-		
-		renderer = new THREE.WebGLRenderer( { antialias: true }  );	
+
+		renderer = new THREE.WebGLRenderer( { antialias: true }  );
 		renderer.setSize( window.innerWidth, window.innerHeight );
 
 		document.body.appendChild( renderer.domElement );
@@ -41,15 +40,15 @@
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; top: 0px; zIndex: 100; ';
-		document.body.appendChild( stats.domElement );    
+		document.body.appendChild( stats.domElement );
 
 		css = document.body.appendChild( document.createElement('style') );
 		css.innerHTML = 'body { font: 600 12pt monospace; margin: 0; overflow: hidden; text-align: center; }' ;
-		
+
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'position: absolute; top: 0px; width: 100% ';
-		info.innerHTML = '<p></p>';  
-		
+		info.innerHTML = '<p></p>';
+
 		scoreCard =   document.body.appendChild( document.createElement( 'div' ) );
 		scoreCard.style.cssText = 'font: bold 36pt monospace; position: absolute; top: 0px; width: 100% ';
 
@@ -67,7 +66,7 @@
 		plane = new THREE.Mesh( geometry, material );
 		plane.position.y = -50;
 		scene.add( plane );
-		
+
 		geometry = new THREE.SphereGeometry( 3, 3, 3);
 
 		assets = new THREE.Object3D();
@@ -84,17 +83,8 @@
 		material = new THREE.MeshNormalMaterial();
 		cube = new THREE.Mesh( geometry, material );
 		scene.add( cube );
-	}	
-	
-	function onDocumentMouseMove( event ) {
+	}
 
-		event.preventDefault();
-
-		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-	}	
-	
 	Leap.loop( function( frame ) {
 		var handString = "";
 		if (frame.hands.length > 0) {
@@ -109,13 +99,13 @@
 			handString += "Sphere radius: " + hand.sphereRadius.toFixed(1) + " mm<br />";
 			info.innerHTML = handString;
 */
-			
+
 			cube.position.set( hand.palmPosition[0], 0.3 * hand.palmPosition[1] - 20, hand.palmPosition[2] );
 			var scale = hand.sphereRadius;
 			camera.position.set( hand.direction[0] * 2 * scale, hand.direction[1] * 2 * scale, hand.direction[2] * 2 * scale );
 		}
 		animate();
-		
+
    })
 
    function vectorToString(vector, digits) {
@@ -127,13 +117,11 @@
 				 + vector[2].toFixed(digits) + ")";
 	}
 
-	var mouse = new THREE.Vector2(), INTERSECTED;
-	
 	function animate() {
 		controls.update();
 		renderer.render( scene, camera );
 		stats.update();
-		
+
 		var pos = cube.position, childs = assets.children;
 		for (var i = 0, len = childs.length; i < len; i++) {
 			if ( pos.distanceTo( childs[i].position ) < 3 ) {
