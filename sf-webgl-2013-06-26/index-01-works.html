@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>docTree</title>
+<script src=http://code.jquery.com/jquery-2.0.1.js ></script>
+<script src=http://code.jquery.com/ui/1.10.3/jquery-ui.js ></script>
+<!--
+<link rel=stylesheet href=stylevvv.css />
+-->
+</head>
+<body>
+<div id="panel" title="docTree Simple R1" ></div>
+<iframe id="viewer"></iframe>
+<script>
+
+	// css = document.body.appendChild( document.createElement('style') );
+	// css.innerHTML = 'body { font: 600 12pt monospace; margin: 0; overflow: hidden; }' ;
+		
+	// var panel = document.body.appendChild( document.createElement( 'div' ) );
+	// panel.style.cssText = "background-color: #aaa; border: 3px solid red; height: 500px; left: 50px; opacity: 0.8; overflow: auto; position: absolute; top: 20px; width: 260px";
+	// panel.id = 'dialog';  // for css
+
+	var panel = document.getElementById( 'panel' );
+	var viewer = document.getElementById( 'viewer' );
+			
+	viewer.style.cssText = "height: " + window.innerHeight + "px; width: " + window.innerWidth + "px;";
+
+	var appName = 'docTree';
+	
+	// main text holder
+	var html = '<h1>docTree</h1><h3>Tagline and/or description</h3>';  
+</script>
+
+<script>
+
+
+	$(function() {
+		var e = $.elements = {};
+		e.theme = "ui-darkness";
+		// e.groupScaleX = e.groupScaleY = e.groupScaleZ = 1;
+		e.groupRotationY = -0.005;
+		
+// <link rel=stylesheet href=http://code.jquery.com/ui/1.10.3/themes/ui-darkness/jquery-ui.css />	
+		var link = document.head.appendChild( document.createElement("link") );
+		link.setAttribute("rel", "stylesheet");
+		link.setAttribute("href", "http://code.jquery.com/ui/1.10.2/themes/ui-darkness/jquery-ui.css");
+/*		
+		if ( location.hash === "" ) {
+			link.setAttribute("href", "http://code.jquery.com/ui/1.10.2/themes/" + e.theme + "/jquery-ui.css");
+		} else {
+			var hashes = location.hash.split("#");
+			e.theme = hashes[1].substr(6)
+			//link.setAttribute("href", "http://code.jquery.com/ui/1.10.2/themes/" + e.theme + "/jquery-ui.css");
+			link.setAttribute("href", "http://code.jquery.com/ui/1.10.2/themes/ui-darkness/jquery-ui.css");
+		}	
+
+		
+		
+
+	    $("<iframe />", {
+			css: { "height": window.innerHeight + "px", "position":"absolute", "width": window.innerWidth + "px" },
+			id: "viewer",
+            // src: "threejs-demo.html",
+        }).appendTo("body");		
+
+*/
+$( "body" ).css( { "font-size": "10pt", "margin":"0", "overflow":"hidden" } );
+
+		$( "#panel" ).dialog({
+			height:  window.innerHeight * 0.8,
+			position: {
+				my: "right top",
+				at: "right-" + 30 + " top+" + 20,
+				of: window
+			},
+			width: "25%"
+		});
+		
+		$( ".ui-dialog" ).css( { opacity: 0.70 } );
+			
+		$( "#accordion" ).accordion( {
+			heightStyle: "fill"
+		});
+/*			  
+		$("<p title='Data sent by Three.js' >Rotation: <span id='status' ></span></p>").appendTo("#updating");
+
+		$("<div id='slider1' title='jQuery setting values in Three.js'></div>").appendTo("#updating");		
+		
+		$( "#slider1" ).slider( {
+			max: 0.2,
+			min: -0.2,		
+			slide: function( event, ui ) {
+				e.groupRotationY = ui.value;
+			},
+			step: 0.01,
+			value: e.cameraRotationY
+		});	
+
+		$("<p>Scale X:</p><div id='slider2' ></div>").appendTo("#updating");		 
+		$( "#slider2" ).slider( {
+			max: 2,
+			min: 0.1,
+			slide: function( event, ui ) {
+				e.groupScaleX = ui.value;
+			},
+			step: 0.05,
+			value: e.groupScaleX
+		});			
+		
+		$("<p>Scale Y:</p><div id='slider3' ></div>").appendTo("#updating");		
+		
+		$( "#slider3" ).slider( {
+			max: 2,
+			min: 0.1,
+			slide: function( event, ui ) {
+				e.groupScaleY = ui.value;
+			},
+			step: 0.05,
+			value: e.groupScaleY
+		});			
+
+		$("<p>Scale Z:</p><div id='slider4' ></div>").appendTo("#updating");		 
+		$( "#slider4" ).slider( {
+			max: 2,
+			min: 0.1,
+			slide: function( event, ui ) {
+				e.groupScaleZ = ui.value;
+			},
+			step: 0.05,
+			value: e.groupScaleZ
+		});		
+		
+		for (var i = 0, len = selectTheme.options.length; i < len; i++) {
+			if ($.elements.theme == selectTheme.options[i].value ) {
+				selectTheme.selectedIndex = i;
+				break;
+			}
+		}
+*/	
+	});	
+
+</script>
+<script src=list.js></script>
+<script src=doctree.js></script>
+<script>
+	if ( window.location.hash.length > 0 ) {
+		goToHash();
+	} else {
+		goTo('1 Section A', 'Category 1 1' ,'File 1 1 1 The Beginning');
+	}
+	
+</script>
+</body>
+</html>

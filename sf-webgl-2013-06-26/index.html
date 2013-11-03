@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>SF WebGL MeetUp 2013-06-26</title>
+<script src=http://code.jquery.com/jquery-2.0.1.js ></script>
+<script src=http://code.jquery.com/ui/1.10.3/jquery-ui.js ></script>
+<link rel=stylesheet href=http://code.jquery.com/ui/1.10.2/themes/ui-darkness/jquery-ui.css />
+</head>
+<body>
+<div id="panel" title="SF WebGL MeetUp 2013-06-26" ></div>
+<iframe id="viewer"></iframe>
+<script src=list.js ></script>
+<script>
+
+	var panel = document.getElementById( 'panel' );
+	var viewer = document.getElementById( 'viewer' );
+
+	viewer.style.cssText = "height: " + window.innerHeight + "px; width: " + window.innerWidth + "px;";
+
+	var appName = 'Jaanga';
+
+	// main text holder
+	var html = '<h1>Voyage to oSome Globe</h1><h3>jaanga.github.io/events/sf-webgl-2013-06-26</h3>';
+
+	var DELIMITER = '/';
+	var nameCategoryMap = {};
+	
+	html += '<div id="accordion">';
+	for ( var section in list ) {
+		html += '<h2>' + section + '</h2>';
+		html += '<ul>';
+		for ( var category in list[ section ] ) {
+			html += '<h3>' + category + '</h3>';
+			html += '<ul>';
+			for ( var i = 0; i < list[ section ][ category ].length; i ++ ) {
+				var page = list[ section ][ category ][ i ];
+				html += '<li><a href="javascript:goTo(\'' + section + '\', \'' + category + '\', \'' + page[ 0 ] + '\')">' + page[ 0 ] + '</a></li>';
+				nameCategoryMap[page[0]] = {
+					section: section,
+					category: category,
+					name: page[0]
+				};
+			}
+			html += '</ul>';
+		}
+		html += '</ul>';
+	}
+	var displaySpeakerNotes = true;
+	panel.innerHTML +=  html + '</div><input checked=displaySpeakerNotes type=checkbox onclick="displaySpeakerNotes = this.checked; goToHash();"/>display speaker notes';
+	
+	function encodeUrl( path ) {
+		return path.replace(/\ \/\ /g, '.').replace(/\ /g, '_');
+	}
+
+	function decodeUrl( path ) {
+		return path.replace(/_/g, ' ').replace(/\./g, ' / ');
+	}
+
+	// Page loading
+	function goTo( section, category, name ) {
+		// Fully resolve links that only provide a name
+		if(arguments.length == 1) {
+			var location = nameCategoryMap[section];
+			section = location.section;
+			category = location.category;
+			name = location.name;
+		}
+		// var title = 'three.js - documentation - ' + section + ' - ' + category + ' - ' + name;
+		// var title = category + '-' + name;
+		var title = name + '-' + category + '-' + section + '-' + appName;
+		var url = encodeUrl(section) + DELIMITER + encodeUrl( category ) + DELIMITER + encodeUrl(name);
+
+		window.location.hash = url;
+		window.document.title = title;
+		viewer.src = pages[ section ][ category ][ name ];
+	}
+
+	function goToHash() {
+		var hash = window.location.hash.substring( 1 ).split(DELIMITER);	
+		goTo( decodeUrl(hash[0]), decodeUrl(hash[1]), decodeUrl(hash[2]) );
+	}
+
+	window.addEventListener( 'hashchange', goToHash, false );
+
+	if ( window.location.hash.length > 0 ) goToHash();
+	
+	if ( window.location.hash.length > 0 ) {
+		goToHash();
+	} else {
+		goTo('Introductions', 'Acknowledgements' ,'Yay: Ken ~ Khronos ~ Tony&Damien');
+	}
+
+	$(function() {
+
+		$( "body" ).css( { "font-size": "10pt", "margin":"0", "overflow":"hidden" } );
+
+		$( "#panel" ).dialog({
+			height:  window.innerHeight * 0.95,
+			position: {
+				my: "right top",
+				at: "right-" + 10 + " top+" + 20,
+				of: window
+			},
+			width: "30%"
+		});
+
+		$( ".ui-dialog" ).css( { opacity: 0.70 } );
+
+		$( "#accordion" ).accordion( {
+			heightStyle: "fill"
+		});
+
+	});
+</script>
+</body>
+</html>
