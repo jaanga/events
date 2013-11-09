@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang=en>
+<head>
+<title>Events Jaanga</title>
+<meta charset=utf-8>
+<meta name=author content='Theo Armour'>
+</head>
+<body>
+<script src=http://jaanga.github.io/libs/md/showdown.js ></script>
+<script src='../libs/db/r2/doc-browser.js' ></script>
+
+	<div id=txt >
+	
+		<h1>
+			<a href='../../jaanga.github.com/home/r2/index.html' >Jaanga</a> &raquo; <a href=# >Events</a>
+		</h1>
+				
+		<p id=intro >
+			<a href=JavaScript:DS.displayMarkdown('readme.md',intro); >Events Read Me on GitHub</a>
+		</p>
+			
+		<p>
+			Events keep happening...
+		</p>	
+<!--				
+		<p id=ab>
+			<a href=JavaScript:DS.displayMarkdown('test-folder-abc/readme.md',ab); >Test Folder ABC</a><br>
+			xxx
+		</p>
+
+		<p id=de>
+			<a href=JavaScript:DS.displayMarkdown('test-folder-def/readme.md',de); >Test Folder DEF</a><br>
+
+			</p>
+
+		<hr>
+-->		
+		<p>
+			<a href='https://github.com/jaanga/libs/blob/gh-pages/jaanga-copyright-and-mit-license.md' ><small>Jaanga Copyright Noticeand License</small></a>
+		</p>
+	
+	</div>		
+
+<script>
+
+	DS.menu.innerHTML = txt.innerHTML;
+	txt.innerHTML = '';
+	DS.init( 'https://github.com/jaanga/libs/tree/gh-pages/db/','readme.md', intro );
+	
+</script>
+</body>
+</html>
