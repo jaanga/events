@@ -3,12 +3,12 @@ Events Read Me
 
 Work that has a beginning and end
 
-Hosteb page:
+## View of this Read Me via GitHub Pages
 
 <http://jaanga.github.io/events/index.html>
 
 
-## SF WebGL MeetUp 2013-06-26
+## SF WebGL Meet-Up 2013-06-26
 
 [jaanga.github.io/events/sf-webgl-2013-06-26/]( http://jaanga.github.io/events/sf-webgl-2013-06-26/ ) ~ Files used during the presentation. [Source]( https://github.com/jaanga/events/tree/gh-pages/sf-webgl-2013-06-26 )
 
