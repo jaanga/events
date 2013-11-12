@@ -1,7 +1,12 @@
 Events Read Me
 ==============
 
-work that has a beginning and end
+Work that has a beginning and end
+
+Hosteb page:
+
+<http://jaanga.github.io/events/index.html>
+
 
 ## SF WebGL MeetUp 2013-06-26
 
