@@ -1,11 +1,13 @@
 Events Read Me
 ==============
 
-Work that has a beginning and end
+_Work that has a beginning and an end_
 
-## View of this Read Me via GitHub Pages
+## View this Read Me via GitHub
 
-<http://jaanga.github.io/events/index.html>
+GitHub Pages: <http://jaanga.github.io/events/index.html>
+
+GitHub Source: <https://github.com/jaanga/events>
 
 
 ## SF WebGL Meet-Up 2013-06-26
