@@ -1,14 +1,14 @@
-SF WebGL 2014-03-12 Read Me
+SF WebGL 2014-03-13 Read Me
 ===========================
 
 ### Live Demo
 
-SF WebGL 2014-03-12 
-<iframe src="http://jaanga.github.io/events/sf-webgl-2014-03-12/latest/index.html" width=100% height=500px class='overview' >
+SF WebGL 2014-03-13 
+<iframe src="http://jaanga.github.io/events/sf-webgl-2014-03-13/latest/index.html" width=100% height=500px class='overview' >
 There is an `iframe` here. It is not visible when viewed on github.com/fgx. To view, please go to fgx.github.io. See 'Project Links' just below.
 </iframe>
 
-[SF WebGL 2014-03-12]( http://jaanga.github.io/events/sf-webgl-2014-03-12/latest/index.html )
+[SF WebGL 2014-03-13]( http://jaanga.github.io/events/sf-webgl-2014-03-13/latest/index.html )
 
 ## Concept
 
@@ -26,8 +26,8 @@ There is an `iframe` here. It is not visible when viewed on github.com/fgx. To v
 
 You have two ways of viewing the Jaanga files:
 
-* Web page hosted on GitHub: [jaanga.github.io]( http://jaanga.github.io/ "view the files as apps." ) <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
-* Source code on GitHub: [github.com/jaanga]( https://github.com/jaanga/ "View the files as source code." ) <scan style=display:none ><< You are now probably here.</scan>
+* Web page hosted on GitHub: [jaanga.github.io]( http://jaanga.github.io/events/sf-webgl-2014-03-13/ "view the files as apps." ) <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
+* Source code on GitHub: [github.com/jaanga]( https://github.com/jaanga/events/sf-webgl-2014-03-13 "View the files as source code." ) <scan style=display:none ><< You are now probably here.</scan>
 
 Jaanga web log: [jaanga.com]( http://jaanga.com )
 
@@ -40,6 +40,14 @@ This app is at an early and volatile stage. Not all licensing requirements may h
 
 ## Change Log
 
+2014-03-10 ~ Theo
+
+* Correct date throughout
+
+
+2014-03-08 ~ Theo
+
+* First commit
 
 
 
