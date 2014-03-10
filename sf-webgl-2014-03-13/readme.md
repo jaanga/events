@@ -11,16 +11,20 @@ There is an `iframe` here. It is not visible when viewed on github.com/fgx. To v
 [SF WebGL 2014-03-13]( http://jaanga.github.io/events/sf-webgl-2014-03-13/latest/index.html )
 
 ## Concept
+A 3D talk about 3D 
 
+## Highlights
 
-## Features
+* 'Slippy Map' TMS is the 3D asset manager to beat
+* Heightmaps are an effective way to store 3D data
+* Canvas tag tools multiply matrices for you fast 
+* OSGEO's GDAL beats out Imagemagick
+* Jonathan de Ferranti's 3D data is many ways amazing
+* GitHub is your friend. Of CORS not. geoJSON, STL
+* 3D mapping is now fast, cheap and easy
 
-
-## Road Map
-
-
-## Issues /Bugs
-
+It's not about building a mapping app  
+It's about extending our languages
 
 ## Project Links
 

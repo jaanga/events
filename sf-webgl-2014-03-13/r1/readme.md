@@ -45,11 +45,11 @@ Presentation
 
 
 <div style=display:none >
-Newton said 'I am standing on the shoulder's of giants'
+Newton said 'I am standing on the shoulder's of giants'.  <br>
 
-He was very smart. You should we should - all follow in his footsteps.
+He was very smart. You should we should - all follow in his footsteps.  <br>
 
-Just make sure your feet are clean so you don't dirty the shoulders.
+Just make sure your feet are clean so you don't dirty the shoulders.  
 
 This talk is about helping you find good sholders to stand on
 
@@ -67,7 +67,7 @@ Both in JavaScript. Both parallel in objectives. But two very different styles o
 - The code is objectified, closured, gulped, hatever
 - The examples old school function calls. =, if, for/to are the only things you need to know
 
-In my code their is not even any HTML or CSS. Both are handled via JavaScript and the Document Object Model( DOM )
+In my code there is not even any HTML or CSS. Both are handled via JavaScript and the Document Object Model( DOM )
 
 
 </div>
