@@ -15,13 +15,15 @@ A 3D talk about 3D
 
 ## Highlights
 
-* 'Slippy Map' TMS is the 3D asset manager to beat
-* Heightmaps are an effective way to store 3D data
-* Canvas tag tools multiply matrices for you fast 
-* OSGEO's GDAL beats out Imagemagick
-* Jonathan de Ferranti's 3D data is many ways amazing
-* GitHub is your friend. Of CORS not. geoJSON, STL
-* 3D mapping is now fast, cheap and easy
+Jaanga unFlatland r10 and FGx Plane Spotter r3. Real-time big data 3D cartography. Fully FOSSelized.
+
+* 'Slippy Map' Tile Map System (TMS) - hierarchical binning - is a nifty 3D asset manager
+* Heightmaps are an effective way to store 3D elevation data. And the easiest to implement
+* Jonathan de Ferranti's 3D elevation data is many ways amazing
+* OSGEO's GDAL beats out Imagemagick for batch processing bitmaps
+* Canvas element's context multiplies the matrices for you - fast
+* GitHub is your friend. Though of CORS not.
+* 3D cartography is now fast, cheap and easy
 
 It's not about building a mapping app  
 It's about extending our languages

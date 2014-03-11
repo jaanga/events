@@ -2,8 +2,9 @@
 ================================================================================================================
 
 <p id=rm >
-	<a href=JavaScript:displayPage("readme.md",rm); >Read Me</a>
+	<a href=JavaScript:displayPage("readme.md#future",rm); >Read Me</a>
 </p>
+
 
 <!--
 <p id=uf >
@@ -21,5 +22,5 @@
 
 ****
 
-[Source Code on GitHub]( https://github.com/jaanga/events/tree/gh-pages/sf-webgl-2014-03-13/r1 )  
+[Source Code on GitHub]( https://github.com/jaanga/events/tree/gh-pages/sf-webgl-2014-03-13/r1/ )  
 [Copyright and License]( https://github.com/jaanga/jaanga.github.io/blob/master/jaanga-copyright-and-mit-license.md )

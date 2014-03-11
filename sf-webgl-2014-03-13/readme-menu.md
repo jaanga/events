@@ -22,5 +22,5 @@
 
 ****
 
-[Source Code on GitHub]( https://github.com/jaanga/events/tree/gh-pages/sf-webgl-2014-03-13 )  
+[Source Code on GitHub]( https://github.com/jaanga/events/tree/gh-pages/sf-webgl-2014-03-13/ )  
 [Copyright and License]( https://github.com/jaanga/jaanga.github.io/blob/master/jaanga-copyright-and-mit-license.md )
