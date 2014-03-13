@@ -7,7 +7,7 @@
 
 
 <p id=uf >
-	<a href=./r1/sf-webgl-2014-03-13.html >Presentation files<br> - with speaker notes</a>
+	<a href=./r1/demo/sf-webgl-2014-03-13.html >Presentation files<br> - with speaker notes</a>
 </p>
 
 [FGx Plane Spotter - Latest Rev]( ../../projects/fgx-plane-spotter/latest/index.html )  

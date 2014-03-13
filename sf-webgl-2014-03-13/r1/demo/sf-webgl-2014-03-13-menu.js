@@ -39,7 +39,7 @@
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; zIndex: 100; ';
 		document.body.appendChild( stats.domElement );
 
-		var data = requestFile( '../../../projects/terrain-plus/gazetteer/places-2000.csv' );
+		var data = requestFile( '../../../../projects/terrain-plus/gazetteer/places-2000.csv' );
 		var lines = data.split(/\r\n|\n/);
 		uf.gazetteer = [ ['Select a location','37.796','-122.398'] ];
 		for ( var i = 1, length = lines.length; i < length; i++ ) {
@@ -70,7 +70,7 @@
 				'<a href="" >San Francisco<br>WebGL Meet-Up<br>2014-03-13</a> ' +
 				'<a href=# title="Get help and info" onclick=help.style.display="block"; ><large>&#x24D8;</large></a>' +
 			'</h1>' +
-			'<h1><a href=../index.html >read me</a></h1>' +
+			'<h1><a href=../../index.html >read me</a></h1>' +
 			'<h1>' +
 				'<a href=JavaScript:heart(); >&lt;3</a><br>' +
 			'</h1>' +
