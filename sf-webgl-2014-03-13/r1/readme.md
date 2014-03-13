@@ -2,7 +2,7 @@ SF WebGL 2014-03-13
 ===================
 
 
-<iframe src="http://jaanga.github.io/demo/sf-webgl-2014-03-13.html" width=100% height=600px class='overview' >
+<iframe src="http://jaanga.github.io/r1/sf-webgl-2014-03-13.html" width=100% height=600px class='overview' >
 There is an `iframe` here. It is not visible when viewed on github.com/fgx. To view, please go to fgx.github.io. See 'Project Links' just below.
 </iframe>
 
