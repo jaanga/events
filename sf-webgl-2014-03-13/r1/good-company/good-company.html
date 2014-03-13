@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang=en>
+<head>
+<title></title>
+<meta charset=utf-8>
+<meta name=author content='Theo Armour'>
+</head>
+<body>
+<script>
+	var creds = 'Thanks to: http://wboykinm.github.io/tile-compare/<br>' +
+		'Cred as Follows: &copy; Apple | OSM/Mapbox &copy; Openstreetmap Contributors | &copy; Google | &copy; National Geographic | &copy; Nokia HERE | &copy; ESRI | &copy; Stamen Design';
+
+	var zoom = 7;
+	var tileX = 20;
+	var tileY = 49;
+
+	var goodCompany = {
+		Apple: { 
+			name: 'Apple iPhoto', 
+			src: function( zoom, x, y ) { 
+				return "http://gsp2.apple.com/tile?api=1&style=slideshow&layers=default&lang=de_DE&z=" + zoom + "&x=" + x + "&y=" + y + "&v=9";
+				}
+			},
+		osm: {
+			name: 'OSM-Mapnik',
+			src: function( zoom, x, y ) { 
+				return "http://tile.openstreetmap.org/" + zoom + "/" + x + "/" + y + ".png";
+			}
+		},
+		google: {
+			name: 'Google',
+			src: function( zoom, x, y ) { 
+				return "http://mt.google.com/vt/hl=en&src=app&x=" + x + "&y=" + y + "&z=" + zoom;
+			}
+		},
+		mapbox: {
+			name: 'Mapbox',
+			src: function( zoom, x, y ) { 
+				return "http://b.tiles.mapbox.com/v3/landplanner.map-qd1qeap9/" + zoom + "/" + x + "/" + y + ".png";
+			}
+		},
+		esri: {
+			name: 'ESRI',
+			src: function( zoom, x, y ) { 
+				return "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/" + zoom + "/" + y + "/" + x + ".png";
+			}
+		},
+		natgeo: {
+			name: 'National Geographic',
+			src: function( zoom, x, y ) { 
+				return "http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/" + zoom + "/" + y + "/" + x + ".png";
+			}
+		},
+		stamentoner: {
+			name: 'Stamen-Toner',
+			src: function( zoom, x, y ) { 
+				return "http://tile.stamen.com/toner/" + zoom + "/" + x + "/" + y + ".jpg";
+			}
+		},
+		stamenwatercolor: {
+			name: 'Stamen-Watercolor',
+			src: function( zoom, x, y ) { 
+				return "http://tile.stamen.com/watercolor/" + zoom + "/" + x + "/" + y + ".jpg";
+			}
+		}
+/*,
+		geosprocket: {
+			name: 'Geosprocket Demo',
+			src: function( zoom, x, y ) { 
+				return "http://b.tiles.mapbox.com/v3/landplanner.geosprocket-basemap/" + zoom + "/" + x + "/" + y + ".png";
+			}
+		}
+*/
+	}
+
+	var keys = Object.keys( goodCompany);
+	var container
+
+	init();
+
+	function init() {
+		document.body.style.cssText = ' font: bold 12pt monospace; ';
+		var info = document.body.appendChild( document.createElement( 'div' ) );
+		info.innerHTML = '<h1>Good Company: TMS Users</h1>' +
+			'<select id=selZoom></select> ' +
+			'<select id=selX></select>'  +
+			'<select id=selY></select> ' +
+			'<a href=JavaScript:drawMaps() > Draw Maps</a>' +
+			'<div style=bottom:0;position:absolute; id=credits>' + creds + '</div>' +
+		'';
+
+		for ( var option, i = 0; i < 21; i++ ) {
+			selZoom.appendChild( option = document.createElement( 'option' ) );
+			selZoom.children[i].text = 'zoom level ' + i;
+		}
+
+		selZoom.onchange = setSelects;
+		selZoom.selectedIndex = zoom;
+
+		setSelects();
+
+		selX.onchange = function() { tileX = this.selectedIndex; };
+		selX.selectedIndex = tileX;
+
+		selY.onchange = function() { tileY = this.selectedIndex; };
+		selY.selectedIndex = tileY;
+
+		drawMaps();
+
+	}
+
+	function drawMaps() {
+		if ( container) container.innerHTML = '';
+		container = document.body.appendChild( document.createElement( 'div' ) );
+
+		for (var i = 0, len = keys.length; i < len; i++) {
+
+			figure = container.appendChild( document.createElement( 'figure' ) );
+			figure.style.cssText = 'border: 1px solid black; display: inline-block; text-align: center';
+			image = figure.appendChild( document.createElement( 'img' ) );
+			image.src = goodCompany[ keys[i] ].src( zoom, tileX, tileY);
+			figcap = figure.appendChild( document.createElement( 'figcaption' ) );
+			figcap.innerHTML = goodCompany[ keys[i] ].name;
+		}
+
+		container.innerHTML += '<br>And many more still to be added. Including:<br>' +
+		'nokia-map '+' nokia-satellite '+' nokia-hybrid '+' nokia-terrain '+' nokia-public_transit '+' nokia-traffic'
+
++ 'google-map '+' google-map-mapmaker '+' google-physical '+' google-satellite '+' google-hybrid '+' google-hybrid-mapmaker '+' google-bicycle-map '+' google-traffic-map '+' google-transit-map '+' google-layers-physical '+' google-panoramio-physical '+' google-weather-sat'
++'google-satellite '+' bing-satellite '+' yahoo-satellite '+' mapquest-satellite '+' nokia-satellite '+' yandex-satellite'
++'mapnik '+' mapnik-german '+' osm-no-labels '+' mapnik-bw'
+
++'transport '+' nokia-public_transit '+' public_transport '+' public_transport_lines '+' google-transit-map'
+
++'bing-map '+' bing-satellite '+' bing-hybrid'
+
++'yahoo-map '+' yahoo-satellite '+' yahoo-hybrid'
+
++'mapnik '+' mapnik-german '+' mapnik-bw '+' toner '+' watercolor '+' cyclemap '+' osm-no-labels '+' transport '+' public_transport '+' hike_bike '+' wanderreitkarte '+' mapbox '+' mapquest-eu '+' mapquest-us '+' skobbler'
+
++'bbbike-german '+' bbbike-smoothness '+' cyclemap '+' bicycle_network '+' adfc-radwege '+' hike_bike'
+
++'bbbike '+' bbbike-german '+' google-map '+' bbbike-smoothness '+' hike_bike '+' mapnik-german'
+
++'google-physical '+' google-layers-physical '+' esri-topo '+' esri '+' nokia-terrain '+' cyclemap '+' yahoo-map '+' landscape '+' wanderreitkarte '+' soviet-military '+' maptoolkit-topo '+' opentopomap '+' landshaded '+' hillshading'
+
++'cloudmade-map '+' cloudmade-fineline '+' cloudmade-midnight '+' cloudmade-paledawn '+' cloudmade-tourist '+' cloudmade-blackout '+' cloudmade-thin '+' cloudmade-cyclewalk'
++'bbbike-german '+' bbbike-smoothness '+' google-map '+' bvg '+' transport '+' nokia-public_transit'
+
++'osm-roads '+' osm-roads-greyscale '+' osm-semitransparent '+' aster-gdem-srtm-hillshade '+' aster-gdem-contour-lines '+' osm-administrative-boundaries'
+
++'esri '+' esri-topo '+' esri-gray '+' esri-satellite '+' esri-physical '+' esri-shaded-relief '+' esri-terrain-base '+' esri-boundaries-places '+' esri-reference-overlay '+' esri-transportation'
+
++'osm-administrative-boundaries '+' esri-boundaries-places'
+
++'falk-osm '+' falk-base'
+
++'mapbox '+' comic-sans'
+
++'mapnik '+' mapnik-retina'
+
++'waymarkedtrails-hiking '+' waymarkedtrails-cycling '+' waymarkedtrails-mtb '+' waymarkedtrails-skating'
+
++'google-map '+' bing-map '+' nokia-map '+' yahoo-map '+' skobbler '+' mapbox '+' esri '+' mapquest-eu';
+
+	}
+
+	function setSelects() {
+		zoom = selZoom.selectedIndex;
+		selX.options.length = 0;
+		selY.options.length = 0;
+
+		limit = Math.pow(2, zoom )
+		selX.children.length = 0;
+		for (var i = 0; i < limit; i++) {
+			selX.appendChild( option = document.createElement( 'option' ) );
+			selX.children[i].text = 'tile X = ' + i;
+		}
+		selY.children.length = 0;
+		for (var i = 0; i < limit; i++) {
+			selY.appendChild( option = document.createElement( 'option' ) );
+			selY.children[i].text = 'tile Y = ' + i;
+		}
+	} 
+
+</script>
+</body>
+</html>

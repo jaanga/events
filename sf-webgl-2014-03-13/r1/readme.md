@@ -16,10 +16,10 @@ SF WebGL 2014-03-13
 ## <a name=heart></a>Heart
 
 * Tony Parisi
-* Damon
+* Damon Hernandez
 * Khronos Group
 * Web GL / Ken Russell
-* Dogpatch host
+* Dogpatch host??
 
 ## Links
 
@@ -47,7 +47,7 @@ Compare with September versions
 - fast and tiny
 
 #### Notes
-Newton said 'I am standing on the shoulder's of giants'.
+Isaac Newton said 'I am standing on the shoulder's of giants'.
 
 He was very smart. You should we should - all follow in his footsteps.
 
@@ -321,6 +321,8 @@ Savior Jonathan de Ferranti
 Probably a character  
 
 ## GDAL/OSGEO is your friend  
+currently: approximately 147,456,000,000 elevation data points
+
 Look at PNG viewer
 Currently source of many errors
 At the start of the learning curve ~ 2nd pass may fix many issues
