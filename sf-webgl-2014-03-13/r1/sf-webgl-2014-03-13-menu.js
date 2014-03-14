@@ -41,7 +41,7 @@
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; zIndex: 100; ';
 		document.body.appendChild( stats.domElement );
-
+/*
 		var data = requestFile( '../../../../jaanga-terrain/terrain-plus/gazetteer/places-2000.csv' );
 		var lines = data.split(/\r\n|\n/);
 		uf.gazetteer = [ ['Select a location','37.796','-122.398'] ];
@@ -50,7 +50,7 @@
 			uf.gazetteer.push( [ pl[0], parseFloat( pl[1] ), parseFloat( pl[2] ) ] );
 			if ( pl[0] === uf.defaults.location ) uf.defaults.start = i; 
 		}
-
+*/
 		parsePermalink();
 		uf.defaults.placards = 1;
 		uf.displayPlacards = 1;

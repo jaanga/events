@@ -8,15 +8,14 @@
 
 [San Francisco WebGL Meet-Up 2014-03-13 - Presentation]( ./r1/sf-webgl-2014-03-13.html )
 
-[San Francisco WebGL Meet-Up 2014-03-13 - Read Me]( ./sf-webgl-2014-03-13/index.html )
 
-[FGx Plane Spotter - Latest Rev]( ../fgx-plane-spotter/latest/index.html )  
+[FGx Plane Spotter - Latest Rev]( ../../fgx-plane-spotter/latest/index.html )  
 
-[FGx Plane Spotter - Read Me]( ../fgx-plane-spotter/index.html )  
+[FGx Plane Spotter - Read Me]( ../../fgx-plane-spotter/index.html )  
 
-[unFlatland - Latest Rev]( ../terrain-viewer/un-flatland/latest/index.html )
+[unFlatland - Latest Rev]( ../../terrain-viewer/un-flatland/latest/index.html )
 
-[unFlatland - Read Me]( ../terrain-viewer/un-flatland/index.html )
+[unFlatland - Read Me]( ../../terrain-viewer/un-flatland/index.html )
 
 
 ****
