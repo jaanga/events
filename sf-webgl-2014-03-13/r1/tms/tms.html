@@ -22,9 +22,10 @@
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'left: 20px; position: absolute; top: 0px;  ';
 		info.innerHTML = '<h1>Slippy Map / Tile Map Service Example</h1>' +
-		'<p>Equally happy in flatland or globular</p>' +
+		'<h1>Format: http:// [url template] / zoom / x / y.png</h1>' +
+		'<h3>Equally happy in flatland or globular</h3>' +
 			'<select id=selZoom ></select>' +
-		'<div id=msg></div>';
+		'<h2 id=msg></h2>';
 
 		for ( var option, i = 0; i < 21; i++ ) {
 			selZoom.appendChild( option = document.createElement( 'option' ) );
@@ -33,9 +34,14 @@
 		selZoom.onchange = drawTerrain;
 
 		var txt; 
-		txt = 'X goes from 0 (left edge is 180&degW) to 2^zoom - 1<br>' +
-			'(right edge is 180&deg;E)<br>' +
-			'Y goes from 0 (top edge is 85.0511 N) to 2^zoom - 1 <br>(bottom edge is 85.0511 S) in a Mercator projection' ;
+		txt = 
+			'Zoom level 0: one tile to cover whole world<br>' +
+			'Zoom level 18: 68,719,476,736 tiles to cover the world<br>' +
+			'X goes from 0 to 2^zoom - 1<br>' +
+			' - Left edge is 180&degW. Right edge is 180&deg;E)<br>' +
+			'Y goes from 0 to 2^zoom - 1 <br>' +
+			' - Top edge is 85.0511 N. Bottom edge is 85.0511 S.<br>' +
+			'All in a Mercator projection' ;
 
 		msg.innerHTML = txt;
 

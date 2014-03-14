@@ -12,18 +12,21 @@
 	function addHelp() {
 		help = document.body.appendChild( document.createElement( 'div' ) );
 		help.style.cssText = 'display: none; background-color: #ccc; left: 50px; opacity: 0.9; padding: 20px; ' +
-			'bottom: 0; left: 0; height: 350px; margin: auto; position: absolute; right: 0; top: 0; width: 500px; zIndex:10; ';
+			'bottom: 0; left: 0; height: 400px; margin: auto; position: absolute; right: 0; top: 0; width: 500px; zIndex:10; ';
 		help.innerHTML =
 			'<div onclick=help.style.display="none"; >' +
 				'<h3>San Francisco WebGL Meet-Up 2014-03-13</h1>' +
-				'<h1>Concept:<br>Eat your own dog food</h1>' +
+				'<h1>Concept:<br>Eat your own dog food.</h1>' +
+				'<h1>Present using the app you are showing.</h1>' +
 				'<ul>' +
-					'<li>Presentation built using the app</li>' +
+
 					'<li>3D talk in 3D world</li>' +
 					'<li>Hosted on GitHub</li>' +
-					'<li>Many aspects suck</li>' +
+					'<li>Many aspects suck. So it goes.</li>' +
 					'<li>Release early. Release often</li>' +
-
+					'<li>Many aspects suck. So it goes.</li>' +
+					'<li>Feedback helps make your app better, faster.</li>' +
+					'<li>Audience gets to see more of your app.</li>' +
 				'</ul>' +
 				'<a href="https://github.com/jaanga/terrain-viewer/tree/gh-pages/un-flatland" target="_blank">Source code</a><br>' +
 				'<small>credits: <a href="http://threejs.org" target="_blank">three.js</a> - ' +
@@ -39,7 +42,7 @@
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; zIndex: 100; ';
 		document.body.appendChild( stats.domElement );
 
-		var data = requestFile( '../../../../projects/terrain-plus/gazetteer/places-2000.csv' );
+		var data = requestFile( '../../../../jaanga-terrain/terrain-plus/gazetteer/places-2000.csv' );
 		var lines = data.split(/\r\n|\n/);
 		uf.gazetteer = [ ['Select a location','37.796','-122.398'] ];
 		for ( var i = 1, length = lines.length; i < length; i++ ) {
@@ -63,9 +66,12 @@
 
 		uf.info = document.body.appendChild( document.createElement( 'div' ) );
 		uf.info.id = 'movable';
-		uf.info.style.cssText = ' background-color: #ccc; height:' + (window.innerHeight-100) + 'px; left: 10px; opacity: 0.8; overflow: scroll; top: 10px; ';
-//		uf.info.addEventListener( 'mousedown', mouseMove, false );
-		uf.info.innerHTML = '<div onclick=uf.info.style.display="none";stats.domElement.style.display="none"; >[x]</div>' +
+		uf.info.style.cssText = ' background-color: #ccc; height:' + (window.innerHeight-50) + 'px; left: 3px; opacity: 0.8; ' +
+			' overflow: scroll; top: 5px; max-width: 80% ';
+		uf.info.addEventListener( 'mousedown', mouseMove, false );
+		uf.info.innerHTML = 
+
+			'<div onclick=uf.info.style.display="none";stats.domElement.style.display="none"; >[x]</div>' +
 			'<h1>' +
 				'<a href="" >San Francisco<br>WebGL Meet-Up<br>2014-03-13</a> ' +
 				'<a href=# title="Get help and info" onclick=help.style.display="block"; ><large>&#x24D8;</large></a>' +
@@ -81,91 +87,50 @@
 				'<a href=JavaScript:concept(); >concept</a><br>' +
 			'</h1>' +
 			'<h1>' +
-				'<a href=JavaScript:demo(); >demo</a><br>' +
+				'<a href=../../../terrain-viewer/un-flatland/r10/un-flatland-r10.html target="_blank" >demo</a><br>' +
 			'</h1>' +
 			'<h1>' +
-				'<a href=JavaScript:slippyMaps(); >Slippy Maps 1</a><br>' +
-				'<a href=JavaScript:slippyMap2(); >Slippy Maps 2</a><br>' +
+				'<a href=JavaScript:slippyMaps(); >slippy maps</a><br>' +
 				'- <a href=../tms/tms.html target="_blank" >tms demo</a><br>' +
 				'- <a href=../good-company/good-company.html target="_blank" >good company</a><br>' +
 			'</h1>' +
 
 			'<h1>' +
 				'<a href=JavaScript:heightmaps(); >heightmaps</a><br>' +
-				'- <a href=../parisi-land/parisi-land.html target="_blank" >Parisi-land</a><br>' +
+				
+				'- <a href=http://jsfiddle.net/theo/Zq65L/ target="_blank" >Parisi Land</a> <a href=../parisi-land/parisi-land.html target="_blank" >pl2</a><br>' +
+				'- <a href=http://jsfiddle.net/theo/2wT9z/ target="_blank" >Parisi Global</a>' +
 			'</h1>' +
 			'<h1>' +
-				'<a href=JavaScript:ferranti(); >J de Ferranti</a><br>' +
-				'- <a href=http://www.viewfinderpanoramas.org/dem3.html target="_blank" >Viewfinder Pano</a><br>' +
-				'- <a href=http://www.osgeo.org/home target="_blank" >osGeo / GDAL</a><br>' +
+				'<a href=JavaScript:ferranti(); >j de ferranti</a><br>' +
+				'- <a href=http://www.viewfinderpanoramas.org/dem3.html target="_blank" >viewfinder pano</a><br>' +
+				'- <a href=http://www.osgeo.org/home target="_blank" >osgeo / gdal</a><br>' +
 			'</h1>' +
 			'<h1>' +
-				'<a href=JavaScript:terrain(); >Jaanga Terrain</a><br>' +
-				'- <a href=http://jaanga.github.io/terrain/readme-reader.html target="_blank" >Terrain Read Me</a><br>' +
-				'- <a href=https://github.com/jaanga/terrain/ target="_blank" >Terrain GitHub</a><br>' +
-				'- <a href=http://jaanga.github.io/terrain-viewer/png-viewer/r3/png-viewer-r3.html target="_blank" >PNG Viewer</a><br>' +
+				'<a href=JavaScript:terrain(); >jaanga terrain</a><br>' +
+				'- <a href=../../../terrain/readme-reader.html target="_blank" >terrain read me</a><br>' +
+				'- <a href=https://github.com/jaanga/terrain/ target="_blank" >terrain github</a><br>' +
+				'- <a href=../../../terrain-viewer/png-viewer/r3/png-viewer-r3.html target="_blank" >png viewer</a><br>' +
 			'</h1>' +
 			'<h1>' +
-				'<a href=JavaScript:terrain(); >GitHib Pages</a><br>' +
-				'<a href=JavaScript:terrain(); >Canvas Element</a><br>' +
-				'<a href=JavaScript:terrain(); >location.hash</a><br>' +
+				'<a href=JavaScript:more(); >more</a><br>' +
+				'<a href=JavaScript:more(); >github pages</a><br>' +
+				'<a href=JavaScript:more(); >canvas element</a><br>' +
+				'<a href=JavaScript:more(); >location.hash</a><br>' +
 			'</h1>' +
+			'<br>' +
 			'<h1>' +
-				'<a href=JavaScript:terrain(); >More</a><br>' +
-				'<a href=JavaScript:terrain(); >Crossfeed</a><br>' +
-				'<a href=JavaScript:terrain(); >Crossfeed Sim</a><br>' +
-				'<a href=JavaScript:terrain(); >location.hash</a><br>' +
+
+				'<a href=../../../fgx-plane-spotter/r3/dummy-folder/fgx-plane-spotter-r3.html target="_blank">plane spotter</a><br>' +
+				'<a href=../../../terrain-viewer/un-flatland/r10/un-flatland-r10-debug.html target="_blank">crossfeed Sim</a><br>' +
 			'</h1>' +
 			'<hr>' +
 			'<h1>' +
-				'<a href=JavaScript:terrain(); >Future Now</a><br>' +
-				'<a href=JavaScript:terrain(); >Call to Action</a><br>' +
+				'<a href=../../../fgx-airports/cookbook/display-csv/r2/display-csv-r2.html target="_blank" >future is now</a><br>' +
+				'<a href=JavaScript:action(); >call to action</a><br>' +
 			'</h1>' +
-/*
-			'<p>' +
-				'Zoom: &nbsp;  &nbsp;<input id=setZoom title="0 to 18: OK"type=number min=0 max=18 step=1 ><br>' +
-				'Scale:  &nbsp; <input id=setScale type=number min=1 max=50 ><br>' +
-				'Overlay: <select id=selMapType title="Select the 2D overlay" ><select>' +
-			'</p>' +
-			'<hr>' +
-			'<p>' +
-				'Tiles/side: &nbsp;<input id=setTiles title="2 to 8: normal. 16+: pushing" type=number min=1 max=32 ><br>' +
-				'Vertices/tile: <input id=setVerts title="16 to 32: OK. 64+: pushing" type=number min=16 max=128 ><br>' +
-				'<hr>' +
-				'Location<br>' +
-				'Lat:<input id=inpLat type="text" size=4 />' +
-				'Lon:<input id=inpLon type="text" size=4 /> ' +
-				'<button id=butGo title="Click Go to update location longitude and latitude" >Go</button><br>' +
-				'<select id=selPlace ></select> ' +
-				'<span id=spnAlt></span>' +
-			'</p>' +
-			'<hr>' +
-			'<p>' +
-				'Camera<br>' +
-				'Lat:<input id=inpCamLat type="text" size=4 />' +
-				'Lon:<input id=inpCamLon type="text" size=4 />' +
-				'Alt:<input id=inpCamAlt type="text" size=3 />' +
-				'</br>' +
-				'Camera Target<br>' +
-				'Lat:<input id=inpTarLat type="text" size=4 />' +
-				'Lon:<input id=inpTarLon type="text" size=4 />' +
-				'Alt:<input id=inpTarAlt type="text" size=3 /><br>' +
-				'<button id=butCam title="Click Go to update camera and target longitude and latitude" >Go</button>' +
-			'</p>' +
-			'<hr>' +
-			'<p>' +
-				'<input id=chkPlacards type="checkbox" >Display Placards' +
-			'</p>' +
-			'<p>' +
-				'<a href=JavaScript:setPermalink(); >Permalink</a> ' +
-				'<a href=JavaScript:clearPermalink(); >Clear Permalink</a><br>' +
-//				'<a href=JavaScript:cameraToPermalink(); >Link to View</a> ' +
-//				'<a href=JavaScript:uf.setCamera(); style:float:right; >Reset Camera</a>' +
-			'</p>' +
-			'<p>' +
-				'<a href=JavaScript:viewPNG(); >View PNG</a></p>' +
-			'</p>' +
-*/
+
+
 			'<hr>' +
 			'<h1>' +
 				'<a href=JavaScript:uf.setCamera(); >&#x2302;</a> ' +
@@ -176,88 +141,36 @@
 			'</h1>' +
 			'<div id=messages></div>' +
 		'';
-
-/*
-		setZoom.value = uf.zoom;
-		setZoom.onchange = function() { uf.zoom = this.value; uf.drawTerrain(); };
-
-		setScale.value = uf.scaleVertical;
-		setScale.onchange = function() { uf.scaleVertical = this.value; uf.drawTerrain(); };
-
-		for ( var option, i = 0, len = uf.mapTypes.length; i < len; i++ ) {
-			selMapType.appendChild( option = document.createElement( 'option' ) );
-			selMapType.children[i].text = uf.mapTypes[i][0];
-		}
-		selMapType.selectedIndex = uf.mapType;
-		selMapType.onchange = function() { uf.mapType = this.selectedIndex; uf.drawTerrain(); };
-
-		setTiles.value = uf.tilesPerSide;
-		setTiles.onchange = function() { uf.tilesPerSide = this.value; uf.drawTerrain(); };
-
-		setVerts.value = uf.vertsPerTile;
-		setVerts.onchange = function() { uf.vertsPerTile = this.value; uf.drawTerrain(); };
-
-		for ( var i = 1, length = lines.length; i < length; i++ ) {
-			selPlace.appendChild( document.createElement( 'option' ) );
-			selPlace.children[ i - 1].text = uf.gazetteer[i - 1][0];
-		}
-
-		inpLat.value = uf.lat;
-		inpLon.value = uf.lon;
-
-		butGo.onclick = function() { 
-			selPlace.selectedIndex = uf.startPlace = 0;
-			uf.setCamera();
-			uf.lat = parseFloat( inpLat.value);
-			uf.lon = parseFloat( inpLon.value);
-			updateMenu(); 
-		};
-
-		selPlace.selectedIndex = uf.startPlace;
-		selPlace.onchange = function() {
-			uf.startPlace = this.selectedIndex;
-			uf.setCamera();
-			inpLat.value = uf.lat = uf.gazetteer[ uf.startPlace ][1];
-			inpLon.value = uf.lon = uf.gazetteer[ uf.startPlace ][2];
-			updateMenu(); 
-		};
-
-		inpCamAlt.value = uf.camAlt;
-		inpCamLat.value = uf.camLat;
-		inpCamLon.value = uf.camLon;
-
-		inpTarAlt.value = uf.tarAlt;
-		inpTarLat.value = uf.tarLat;
-		inpTarLon.value = uf.tarLon;
-
-		butCam.onclick = function() { updateCameraTarget() };
-		chkPlacards.checked = uf.displayPlacards > 0 ? true : false;
-		chkPlacards.onchange = function() { uf.displayPlacards = chkPlacards.checked ? 1 : 0; uf.update = true; };
-*/
+		window.addEventListener('mouseup', mouseUp, false);
 
 	}
 
 var bullets = new THREE.Object3D();
+var colors = ['#ff0000','#00ff00','#0000ff','#ffffff', '#ffff00','#ff00ff','#00ffff',];
 
 	function heart() {
 
 		uf.scene.remove( bullets );
 		bullets = new THREE.Object3D();
 		bullets.ht = 1;
-		mesh = drawSprite( 'Tony Parisi', bullets.ht, '#fff', -20, 180, 900 );
+		mesh = drawSprite( 'Tony Parisi', bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], -20, 180, 900 );
 		bullets.add( mesh );
 
-		mesh = drawSprite( 'Damon Hernandez', bullets.ht, '#fff', 300, 70, 800 );
+		mesh = drawSprite( 'Damon Hernandez', bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], 300, 70, 800 );
 		bullets.add( mesh );
 
-		mesh = drawSprite( 'Web GL & Ken Russell', bullets.ht, '#fff', -0, 100, 20 );
+		mesh = drawSprite( 'WebGL & Ken Russell', bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], -0, 100, 20 );
 		bullets.add( mesh );
 		
-		mesh = drawSprite( 'Khronos Group', bullets.ht, '#fff', 200, 210, -300 );
+		mesh = drawSprite( 'Khronos Group', bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], 200, 210, -300 );
 		bullets.add( mesh );
 
-		mesh = drawSprite( ['Host:','VonChurch Consulting','http://vonchurch.com','Nicole Ossey','Leah Thomas'], bullets.ht, '#fff', -200, 400, -300 );
+		mesh = drawSprite( ['Host:','VonChurch Consulting','http://vonchurch.com','Nicole Ossey','Leah Thomas'], bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], -200, 400, -300 );
 		bullets.add( mesh );
+
+		mesh = drawSprite( ['Any Others?' ], bullets.ht, colors[ Math.floor(Math.random()*colors.length) ], 600, 400, -800 );
+		bullets.add( mesh );
+
 		uf.scene.add( bullets );
 	}
 
@@ -283,16 +196,22 @@ var bullets = new THREE.Object3D();
 		bullets = new THREE.Object3D();
 		bullets.ht = 1;
 
-		var txt = ['Follow Isaac Newton\'s footsteps:','Stand on the shoulders of giants']; 
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 400, 100 );
+		var txt = ['Backstory on this talk...','My thoughts when coding...']; 
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 3000, 100 );
 		bullets.add( mesh );
 
-		txt = [ 'Follow Mr.doob:', 'Build code for dummies' ];
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 250, 100 );
+		var txt = ['1. Follow Isaac Newton\'s footsteps:','Stand on the shoulders of giants',' ', 'Here are some good shoulders']; 
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 2000, 100 );
 		bullets.add( mesh );
 
-		txt = [ 'Follow the nice nerdy bartender: ', 'Supply free beer and free code' ];
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 80, 100 );
+		txt = [ '2. Follow Mr.doob:', 'Build code for dummies', '', 
+			'Remember: not everbody is a programmer',
+			'Pilots, architects, teachers and more are learning to code'];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 1000, 100 );
+		bullets.add( mesh );
+
+		txt = [ '3. Follow the nice nerdy bartender: ', 'Supply free beer and free code',' ', 'Let people start with no money passing hands...' ];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 100, 80, 100 );
 		bullets.add( mesh );
 
 		uf.scene.add( bullets );
@@ -307,11 +226,20 @@ var bullets = new THREE.Object3D();
 		bullets = new THREE.Object3D();
 		bullets.ht = 1;
 
-		var txt = ['Asset Organization:','Tile Map Service / Slippy Map']; 
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 400, 500 );
+		var txt = [
+			'Good Shoulders for asset organization:',
+			'>>Tile Map Service / Slippy Map', '',
+			'How to track ~147 & 1/2 billion elevation data points?',
+			'How to store 16,384 files of data?', '',
+			'For free, yet fast. And dummy doable?'
+
+		]; 
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 300, 500 );
 		bullets.add( mesh );
 
-		txt = [ 'Benefits',
+
+
+		txt = [ 'Slippy Map / TMS Benefits',
 			'The fastest, easiest idea for managing location assets',
 			'- real or game',
 			'- flatland or globe' ,
@@ -320,68 +248,363 @@ var bullets = new THREE.Object3D();
 			'Tools are there, math is easy, tons of help'
 
 		];
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 250, 0 );
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 1000, 0 );
 		bullets.add( mesh );
 
-		txt = [ 'Need to be able to:',
-			'catalog very huge numbers of ojects at varying levels - at least twenty - of detail.',
-
+		txt = [ 'The Problem', '',
+			'You need to be able to:',
+			'Catalog huge numbers of objects at varying - at least 20 - levels of detail.',
 			'Go to a location and see what objects are there.',
-			'Identify and object and see where it is located.',
-			'Calculate distance bewteen any objects in a simple liner manner',
+			'Identify an object and see where it is located.',
+			'Calculate distance between any objects in a simple linear manner',
 			'Jump between lat/lon/alt, theta/phi/radius and XYZ. Any more?',
 			'',
-			'These asset issues occur in all manner of way:',
+			'These asset issues occur in all manner of locations:',
 			'On the surfaces of planets and this occurs on protons and neutrons',
 			'In real or imaginary scenarios'
 		];
-		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 80, -500 );
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 2000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'The Barriers', '',
+			'Server code is out there, but you need a access to your own real-live-costs-real-money server',
+			'Catalog huge numbers of objects at varying - at least 20 - levels of detail.',
+
+			'Stuff is out there but it is no longer supported (ie huge amounts of government-aided projects )',
+			'Great libraries are out there but you need to be able to write Java and use Eclipse',
+
+			'Very powerful tools exist and you better be an expert in Delaunay triangulation and point clouds',
+			'You have all of the above but can\'t afford the intellectual property usage fees or can\'t comply with the license requirements',
+			'It\'s difficult, costly and time-consuming. It may also be old-school',
+			'>> Hints it\'s old school:',
+			'Using LL and UR instead of UL and LR',
+			'Putting the words \'web\' and emphasize  \'service\' around TMS.',
+			'Talking of XML'
+			
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 5000, -500 );
+		bullets.add( mesh );
+
+		txt = [
+			'Implementation: Tile Map Service / Slippy Map', '',
+			'TMS enables database-like queries to pass data between client-side and a static host',
+			' - without a database and without server-side code',
+			'It\'s a way to manage folders and files so they work like a database', '',
+			'It\'s a way of building URLs so they act like database queries ', '',
+
+			'Tiles are a geo-data storage/indexing strategy - more commonly referred to as >>hierarchical binning<<. ', '',
+
+			'The tiles are square bitmap graphics displayed in a grid arrangement to show a map',
+			'The current standard is based on 256 × 256 pixel PNG files',
+			'Each zoom level is a directory, each column is a subdirectory, and each tile in that column is a file',
+			'The filename (URL) format is http://[url template]/zoom/x/y.png',
+			'The [URL template] specifies the tile server, and perhaps other parameters which might influence the style.',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 7000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'Let\'s look at a demo...'
+			
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 8000, -500 );
+		bullets.add( mesh );
+
+		uf.scene.add( bullets );
+/*
+A 'tileset' includes a grid of enough tiles to form a large image.
+Generally the idea is not to show all the tiles in a tileset all at once, but only to show the ones needed at the moment
+Normally JavaScript routines are used to request fresh tiles from the host. 
+
+There may be multiple zoom levels each with its own tileset.
+The zoom parameter is an integer between 0 (zoomed out) and 18 (zoomed in). 18 is normally the maximum, but some tile servers might go beyond that.
+Zoom level 0 is one tile that covers whole world
+Zoom level 18 requires 68,719,476,736 tiles to cover the world
+*/
+
+	}
+
+
+
+	function heightmaps() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
+
+		txt = [ 'Now you have shoulders that give nice bins for your data,',
+				' - What 3D data are you going to put in those bins?', '',
+				'Good Shoulders Managing and Storing 3D Elevation Data:',
+				'>> Heightmaps'
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 300, -500 );
+		bullets.add( mesh );
+
+		txt = [ 
+			'The Problem',
+			'There is a lot of data.',
+			'If you need one data point for every tile at zoom level 18 ',
+			'- then you need to manage 68,719,476,736 (68 trillion) items of data to cover the world.',
+			'Any data format that is not fast, easy is likely to conflict with creating 3D maps.', '',
+			'Fun fact: TMS is good for any sort of data, not just maps.' 
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 1000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'The Barriers',
+			'Google provides an elevation service. If you are a Maps For business user you are allowed to acquire elevatiomns for 1,000,000 total locations per day.',
+			'So it would only take 68,000 days to acquire our data. And that data would be in ASCII JSON format.', '',
+			'One standard format is SDTS. See http://mcmcweb.er.usgs.gov/sdts/',
+			'Regarding SDTS, the Virtual Terrain Project says: \'it is a truly ugly, awful mess of a format\' ', '',
+			'How about raw binary? Could this be the most efficient way.',
+			'http://www.ngdc.noaa.gov/cgi-bin/mgg/ff/nph-newform.pl/mgg/topo/customdatacd',
+			'This site offers 180 by 360 degree area (21600 rows X 43200 columns = 933,120,000 grid cells), and each data value will occupy 2 bytes. ',
+			'The uncompressed data file size will be 1,866,240,000 bytes.',
+			'Nearly 2 gigs of data here. Now we only need 73 more files like this to get to our one data point per leve; 18 tile/ ',
+			'Oh and actually that tile is 150 meters per sided. We want to get to 30 meter resolition so we need 25 times that data.', '',
+			'Even the bimary data source we use - in HGT format - is \'only\' 65GB. ', '',
+			'There is no way that you can build a realtime 3D TMS map with 65GB of normal binary data.',
+			''
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 3000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'The implementation',
+			'Heightmap: ',
+			'Wikipedia: A raster image used to store values, such as surface elevation data, for display in 3D computer graphics.', '',
+			'A heightmap can be used in ',
+			'	* bump mapping to calculate where this 3D data would create shadow in a material',
+			'	* displacement mapping to displace the actual geometric position of points over the textured surface,',
+			'	* terrain modeling where the heightmap is converted into a 3D mesh.', '',
+			'Your shoulders are on the third usage',
+			'',
+			''
+			
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 5000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'Heightmap Benefits',
+			'Bitmaps travel fast.',
+			'Servers know how to send PNG files really well. ',
+			'So do ISPs and carriers.',
+			'And rowsers know how to receive thme fast.',
+			'All of these services  understand, caching, deleting and transmitting bitmaps',
+			'Can do all this and garbage collection at run-time.', '',
+			'There\'s a lot of knowledge about bitmmaps - much more than other binary formats',
+			'- lots of shoulders you can stand on', '',
+			'And, btw, bitmaps are an easy way to compress the s*** ot of data'
+			
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 7000, -500 );
+		bullets.add( mesh );
+
+
+		txt = [ 'Let\'s look at a demo...',
+			'',
+			'BTW',
+			'Babylon has a great height map tutorial and buit-in functionality',
+			'https://github.com/BabylonJS/Babylon.js/wiki/16-Height-map',
+			'',
+			'',
+			'',
+			''
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 8000, -500 );
+		bullets.add( mesh );
+
+		uf.scene.add( bullets );
+
+	}
+	
+	function ferranti() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
+
+		txt = [ 
+			'Now you know what to put in the bins,',
+			'Where do you source the data?', '',
+			'',
+			'Excellent shoulders: Jonathan de Ferranti  ',
+			'Probably a character...',
+			'',
+			'',
+			'',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 200, -500 );
+		bullets.add( mesh );
+
+		txt = [ 
+			'The Problem',
+			'2D data is easy to get',
+			'Search Google for place + lan lon and you got the data.',
+			'But no elevation or altitude data',
+			'It\'s as if we lived in a 2D world.',
+			'',
+			'Where\'s the data?  ',
+			'Almost everything we know comes from a 2000 Shuttle mission  ',
+			'Now a mishmash of out of date stuff and broken links  ',
+			'Kind of weird: we know the lat lon of just about everywhere on earth, ',
+			' - but not it\'s elevation.  ',
+			'We are true flatlanders',
+			'',
+			'The shoulders: Ferranti\'s site...',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 2000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'Data procsseing shoulders: osGeo / GDAL',
+			'',
+			'How do you get the data fron the Binary HGT files into PNG files?',
+			'',
+			'GDAL: command-line driven. Fast. Not too difficult to learn',
+			'Crib sheet in Jaanga Terrain',
+			'Fster and more effective than Image Magick',
+			'',
+			'My GDAL knowledge still at beginner level...',
+			'',
+			'The shoulders: osGeo/GDAL',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 4000, -500 );
 		bullets.add( mesh );
 
 		uf.scene.add( bullets );
 	}
 
+	function terrain() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
 
-	function slippyMap2() {
+		txt = [ 'Now you know the basics,',
+			'Is there a good example of the process?', '',
+			'',
+			'Possible shoulders: Jaanga Terrain  ',
+			'How about standing on the shoulders of dwarfs?',
+			'',
+			'Takes Ferranti\'s 65GB of data, over 1,100 files',
+			'Brings it down to 2.8 GB of data',
+			'Stores the data as if it is TMS level 7 data',
+		];
+
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 300, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'And to interpolate the data',
+			'Look at the Jannga Terrain Viewer examples', '',
+			'',
+			'See PNG viewer of the overview...',
+			'',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50,2000, -500 );
+		bullets.add( mesh );
+
+		uf.scene.add( bullets );
+	}
+
+	function more() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
+
+		txt = [ 'GitHub Pages',
+			'Under utilized resource', '',
+			'So easy: just publish to branch with title \'gh-pages\'. ',
+			'Nice limits: 1 GB per repo. Projects can have as many repos os needed',
+			'Publish any type of static data: HMTNL, CSS, JS, images, PDF etc',
+			'Use it as a starter Content Delivery Network',
+			'',
+			'Janang Terrain data: 2.65 GB in 16K files: all on GitHub',
+			'',
+			'BTW, GitHub has built-in readers for STL, CSV, and geoJSON files',
+			'',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 300, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'Canvas Element',
+			'', 
+			'Working with raw binary files requires matrix multiplication',
+			'- lots of it.',
+			'',
+			'Working with bitmap files allow you to use the HTML Canvas element',
+			'- getImageData and putImageData do the multiplications for you',
+			'- painlessly and very fast.',
+			'',
+			'Canvas is a great shoulder.',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 2000, -500 );
+		bullets.add( mesh );
+
+		txt = [ 'Location.hash',
+			'Easy way to add permalinks', '',
+			'Client-side oriented',
+			'Real-time updating and clearing',
+			'',
+			'',
+			'',
+			'',
+		];
+
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 4000, -500 );
+		bullets.add( mesh );
+
+		uf.scene.add( bullets );
+	}
+
+	function action() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
+
+		txt = [ 'Call to Action',
+			'', 
+			'Where are the people who like to design in 3D',
+			'- using code as their media?',
+			'',
+			'2D designers: are everywhere',
+			'3D programmers: not enough but at least there are some',
+			'',
+			'Looking for a good online venue for open-ended 3D dicussion',
+			'- WebGL Dev: for programmers',
+			'- Reddit: no ongoing discussion.',
+			'',
+			'Please put me in touch with people you know who thing like this...',
+			''
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 300, -500 );
+		bullets.add( mesh );
+
+		uf.scene.add( bullets );
+	}
 
 /*
+	function xxx() {
+		uf.scene.remove( bullets );
+		bullets = new THREE.Object3D();
+		bullets.ht = 1;
 
-### What exists are Barriers
+		txt = [ '',
+			'', '',
+			'',
+			'',
+			'',
+			'',
+			'',
+			'',
+			'',
+		];
+		mesh = drawSprite( txt, bullets.ht, '#fff', 50, 1000, -500 );
+		bullets.add( mesh );
 
-Server code is out there, but you need a access to your owm real-live-costs-real-money server
-Stuff is out there but you need an API key
-Stuff is out there but it is no longer supported (ie huge amounts of government-aided projects )
-Great libraries are out there but you need to be able to write Java and use Eclipse
-Very powerful tools exist and you better be an expert in Delaunay triangulation and point couds
-You have all of the above but can't afford the intellectual property usage fees or can't comply with the license reuirements
-It's difficult, costly and time-consuming. It may also be old-school
-
-### Wanted
-You are one little dude and want something that you can be able to play with within, say 45 minutes.
-It's free and works in your browser now.
-
-
+		uf.scene.add( bullets );
+	}
 */
-
-}
-
-	function slippyImplement() {
-/*
-Implementation: Tile Map Service / Slippy Map
-### X and Y Details
-
-*/
-
-	}
-
-	function heightmap() {
-
-	}
-	
-	function ferranti() {
-
-	}
-
 
 	function updateMenu() {
 		uf.drawTerrain();

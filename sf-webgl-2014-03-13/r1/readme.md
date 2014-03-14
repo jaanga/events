@@ -2,18 +2,28 @@ SF WebGL 2014-03-13
 ===================
 
 
-<iframe src="http://jaanga.github.io/r1/sf-webgl-2014-03-13.html" width=100% height=600px class='overview' >
-There is an `iframe` here. It is not visible when viewed on github.com/fgx. To view, please go to fgx.github.io. See 'Project Links' just below.
-</iframe>
 
+#Help
 
-## Slide
+Talking with Tony
+Can we get Powerpoint to 3D?
+Not yet. PP doesn't export
 
-SF WebGL 2014-03-13
+But maybe more important
+Eat your own dogfood
 
-[SF WebGL 2014-03-13]( http://jaanga.github.io/events/sf-webgl-2014-03-13/latest/index.html )
+This presentation linda sucks
+- No colors, messy. I don't know what I'm doing
+
+But it's mine
+I'm testing my app - hard.
+I get to know its dark side
+
+So...
 
 ## <a name=heart></a>Heart
+Now to the thanks
+
 
 * Tony Parisi
 * Damon Hernandez
@@ -28,6 +38,7 @@ Code
 
 Presentation  
 * http://jaanga.gitub.io/events/sf-webgle-2014-03-13
+
 
 ## Demo #1
 
@@ -253,7 +264,7 @@ If you need one data point for every tile at zoom level 18 then that requires 68
 
 Any data format that is not fast, easy is likely to conflict with creating 3D maps.
 
-Google provides an elevation service. If you are a Maps For buiness user you are allowed to acquire elevatiomns for 1,000,000 total locations per day.
+Google provides an elevation service. If you are a Maps For business user you are allowed to acquire elevatiomns for 1,000,000 total locations per day.
 So it would only take 68,000 days to acquire our data. And that data would be in ASCII JSON format.
 
 One standard format is SDTS. See http://mcmcweb.er.usgs.gov/sdts/
