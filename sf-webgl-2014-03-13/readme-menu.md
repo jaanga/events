@@ -1,4 +1,4 @@
-[Jaanga]( ../index.html ) &raquo; [SF WebGL<br>2014-03-13]( ./index.html )
+[Jaanga]( ../index.html ) &raquo;<br>[SF WebGL<br>2014-03-13]( ./index.html )
 ============================================================================================================
 
 <p id=rm >
@@ -8,6 +8,7 @@
 
 [San Francisco WebGL Meet-Up 2014-03-13 - Presentation]( ./r1/sf-webgl-2014-03-13.html )
 
+<br>
 
 [FGx Plane Spotter - Latest Rev]( ../../fgx-plane-spotter/latest/index.html )  
 
