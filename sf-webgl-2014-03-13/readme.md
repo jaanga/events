@@ -9,7 +9,7 @@ There is an `iframe` here. It is not visible when viewed on github.com/fgx. To v
 [SF WebGL 2014-03-13]( http://jaanga.github.io/events/sf-webgl-2014-03-13/r1/sf-webgl-2014-03-13.html )
 
 ## Concept
-A 3D talk about 3D cartography/
+A 3D talk about 3D cartography.
 
 ## Highlights
 
